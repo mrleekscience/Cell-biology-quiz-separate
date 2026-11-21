@@ -1,0 +1,2517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mr Leek Science — AQA GCSE Biology (Separate Science 8461): Cell Biology</title>
+  <!-- Load Tailwind CSS for responsive layout helpers alongside custom dark-mode edtech styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-dark: #0b1120;
+      --panel-bg: #111827;
+      --card-bg: #1e293b;
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --cyan: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.25);
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+      --purple: #a855f7;
+      --rose: #fb7185;
+      --amber: #facc15;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top right, #112438 0%, var(--bg-dark) 58%);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    .app-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 18px 52px;
+    }
+
+    /* TOP BAR — Unaltered top-left logo only */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      max-height: 76px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .brand h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .brand-sub {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .site-link {
+      color: var(--cyan);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .site-link:hover {
+      color: var(--emerald);
+      text-decoration: underline;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .user-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.38);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    .user-chip .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+    }
+
+    /* BUTTONS & INPUTS */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), var(--emerald));
+      color: #041019;
+      font-weight: 700;
+      border: none;
+      padding: 13px 22px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.96rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--cyan-glow);
+    }
+
+    .full-width {
+      width: 100%;
+    }
+
+    .btn-ghost {
+      background: var(--panel-bg);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      padding: 10px 15px;
+      border-radius: 11px;
+      cursor: pointer;
+      font-size: 0.86rem;
+      font-weight: 600;
+      transition: border-color 0.15s ease, color 0.15s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .btn-strengths {
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: #bae6fd;
+      padding: 9px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: all 0.15s ease;
+    }
+
+    .btn-strengths:hover {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: var(--cyan);
+      transform: translateY(-1px);
+    }
+
+    .btn-retry-missed {
+      background: rgba(250, 204, 21, 0.16);
+      border: 1px solid rgba(250, 204, 21, 0.48);
+      color: #fef08a;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease;
+    }
+
+    .btn-retry-missed:hover {
+      background: rgba(250, 204, 21, 0.26);
+      transform: translateY(-1px);
+    }
+
+    /* VIEWS */
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    /* START CARD — Clean without central logo */
+    .login-card {
+      max-width: 640px;
+      margin: 14px auto;
+      background: var(--panel-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .login-header {
+      text-align: center;
+    }
+
+    .pill-tag {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.16);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .login-header h2 {
+      font-size: 1.58rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .login-header p {
+      color: var(--text-muted);
+      font-size: 0.91rem;
+      margin-bottom: 22px;
+      line-height: 1.55;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 2px 0;
+    }
+
+    .start-action-footer {
+      margin-top: 4px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 560px) {
+      .form-row-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+
+    .optional-badge {
+      font-weight: 500;
+      color: var(--cyan);
+      font-size: 0.78rem;
+    }
+
+    .required-star {
+      color: var(--rose);
+      font-weight: 700;
+    }
+
+    .error-banner {
+      background: rgba(251, 113, 133, 0.14);
+      border: 1px solid var(--rose);
+      color: #fecdd3;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 12px 14px;
+      border-radius: 11px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .form-group input.input-error {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 2px rgba(251, 113, 133, 0.25);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--cyan);
+    }
+
+    /* LENGTH SELECTOR GRID */
+    .option-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .option-grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .choice-pill-btn {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 12px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 2px;
+      transition: all 0.15s ease;
+    }
+
+    .choice-pill-btn strong {
+      font-size: 0.92rem;
+    }
+
+    .choice-pill-btn span {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+    }
+
+    .choice-pill-btn:hover {
+      border-color: var(--cyan);
+    }
+
+    .choice-pill-btn.active {
+      border-color: var(--emerald);
+      background: rgba(16, 185, 129, 0.16);
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.18);
+    }
+
+    .choice-pill-btn.active strong {
+      color: #6ee7b7;
+    }
+
+    .login-footer {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* HUD & PROGRESS */
+    .hud-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .hud-stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .stat-pill {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-subtle);
+      padding: 8px 14px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .stat-val {
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .stat-pill.streak .stat-val {
+      color: var(--amber);
+    }
+
+    .stat-pill.score .stat-val {
+      color: var(--emerald);
+    }
+
+    .lifelines {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-tool {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #bae6fd;
+      padding: 10px 14px;
+      border-radius: 11px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-tool:hover:not(:disabled) {
+      background: rgba(56, 189, 248, 0.22);
+      border-color: var(--cyan);
+    }
+
+    .btn-tool:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      background: var(--panel-bg);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--emerald));
+      transition: width 0.3s ease;
+    }
+
+    /* SPLIT ARENA */
+    .arena-grid {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .arena-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .specimen-panel,
+    .question-panel {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .specimen-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 0.78rem;
+    }
+
+    .specimen-tag {
+      color: var(--cyan);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+
+    .specimen-topic {
+      color: var(--text-muted);
+    }
+
+    .specimen-canvas {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #080d1a;
+    }
+
+    .clue-box {
+      margin-top: 12px;
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.4);
+      color: #fef08a;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+    }
+
+    .shortcut-hint {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+      font-size: 0.8rem;
+    }
+
+    .aqa-ref {
+      color: var(--emerald);
+      font-weight: 700;
+    }
+
+    .category-badge {
+      background: rgba(56, 189, 248, 0.16);
+      color: #bae6fd;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 3px 11px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .question-text {
+      font-size: 1.14rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: var(--text-main);
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .option-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 14px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--cyan);
+      background: #24334d;
+    }
+
+    .opt-letter {
+      background: rgba(148, 163, 184, 0.16);
+      color: var(--cyan);
+      font-weight: 800;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.84rem;
+      flex-shrink: 0;
+    }
+
+    .option-btn.correct {
+      border-color: var(--emerald);
+      background: rgba(16, 185, 129, 0.18);
+    }
+
+    .option-btn.correct .opt-letter {
+      background: var(--emerald);
+      color: #041019;
+    }
+
+    .option-btn.wrong {
+      border-color: var(--rose);
+      background: rgba(251, 113, 133, 0.18);
+    }
+
+    .option-btn.wrong .opt-letter {
+      background: var(--rose);
+      color: #041019;
+    }
+
+    .option-btn.eliminated {
+      opacity: 0.28;
+      text-decoration: line-through;
+    }
+
+    .feedback-drawer {
+      margin-top: 18px;
+      padding: 16px;
+      background: #0a101f;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+    }
+
+    .feedback-title {
+      font-weight: 800;
+      font-size: 0.94rem;
+      margin-bottom: 6px;
+    }
+
+    .feedback-drawer p {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      margin-bottom: 14px;
+    }
+
+    /* RESULTS & DIAGNOSTIC DASHBOARD */
+    .results-wrapper {
+      max-width: 840px;
+      margin: 14px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .results-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .grade-ring {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      border: 3px solid var(--cyan);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 28px var(--cyan-glow);
+    }
+
+    .grade-sub {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .grade-ring strong {
+      font-size: 1.95rem;
+      color: var(--cyan);
+      line-height: 1.15;
+    }
+
+    .res-subline {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      margin-top: 6px;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .email-pill-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #bae6fd;
+      font-size: 0.83rem;
+      font-weight: 600;
+    }
+
+    .res-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 22px 0;
+    }
+
+    @media (max-width: 560px) {
+      .res-metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .metric-box {
+      background: var(--card-bg);
+      padding: 12px 8px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .metric-box span {
+      display: block;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .metric-box strong {
+      font-size: 1.08rem;
+    }
+
+    .res-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .copy-toast {
+      margin-top: 12px;
+      font-size: 0.84rem;
+      color: var(--emerald);
+      font-weight: 600;
+    }
+
+    /* TOPIC DIAGNOSTICS PANEL */
+    .diagnostic-panel,
+    .review-panel {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 26px;
+    }
+
+    .section-heading {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .section-sub {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .topic-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .topic-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .diag-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .diag-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .status-tag.strength {
+      background: rgba(16, 185, 129, 0.18);
+      color: #6ee7b7;
+    }
+
+    .status-tag.developing {
+      background: rgba(250, 204, 21, 0.18);
+      color: #fef08a;
+    }
+
+    .status-tag.weakness {
+      background: rgba(251, 113, 133, 0.18);
+      color: #fecdd3;
+    }
+
+    .status-tag.untested {
+      background: rgba(148, 163, 184, 0.16);
+      color: var(--text-muted);
+    }
+
+    .topic-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: #0b1120;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .topic-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .diag-tip {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    /* QUESTION REVIEW LIST */
+    .review-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .review-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .review-item.is-correct {
+      border-left: 4px solid var(--emerald);
+    }
+
+    .review-item.is-wrong {
+      border-left: 4px solid var(--rose);
+    }
+
+    .review-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.78rem;
+    }
+
+    .review-q-text {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .review-answers {
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .review-exp {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      background: rgba(11, 17, 32, 0.55);
+      padding: 9px 12px;
+      border-radius: 8px;
+    }
+
+    .results-footer-link {
+      text-align: center;
+      padding-top: 8px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    /* LIVE MODAL FOR MID-QUIZ DIAGNOSTICS */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 6, 14, 0.84);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 999;
+    }
+
+    .modal-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      max-width: 640px;
+      width: 100%;
+      padding: 24px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .btn-close {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .modal-footer {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- TOP BAR: Unaltered top-left Mr Leek Science logo only -->
+    <header class="top-bar">
+      <div class="brand">
+        <img id="headerLogo" src="mrleeksciencelogo.png" alt="Mr Leek Science Logo" class="brand-logo" />
+        <div>
+          <h1>GCSE Biology (Separate Science): Cell Biology</h1>
+          <div class="brand-sub">
+            <span>AQA Biology (8461) • Paper 1 Revision</span>
+            <span>•</span>
+            <a href="https://mrleekscience.co.uk" target="_blank" rel="noopener noreferrer" class="site-link">mrleekscience.co.uk ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <div id="userChip" class="user-chip" style="display:none;">
+          <span class="dot"></span>
+          <strong id="chipName">Student</strong>
+        </div>
+        <button id="btnStrengths" class="btn-strengths" style="display:none;" onclick="openAnalysisModal()">
+          📊 Strengths &amp; Weaknesses
+        </button>
+        <button id="btnSwitchUser" class="btn-ghost" style="display:none;" onclick="resetToStart()">Change Settings</button>
+      </div>
+    </header>
+
+    <!-- VIEW 1: START SCREEN -->
+    <section id="viewLogin" class="view active">
+      <div class="login-card">
+        <div class="login-header">
+          <div class="pill-tag">AQA GCSE Biology (8461) • Separate Science Only</div>
+          <h2>Cell Biology (Separate Science) Revision Quiz</h2>
+          <p>
+            Focused exclusively on the Separate Biology (Triple Science) content in Topic 1:
+            <strong>Culturing Microorganisms</strong> (Binary Fission, Aseptic Technique, Agar Plates, Mean Division Time &amp; Zones of Inhibition)
+            and <strong>Monoclonal Antibodies</strong> (Hybridoma Production, Diagnosis, Treatment &amp; Side Effects).
+          </p>
+        </div>
+
+        <form id="loginForm" class="login-form" onsubmit="handleStart(event)" novalidate>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="studentName">Student Name <span class="required-star">*</span></label>
+              <input type="text" id="studentName" placeholder="Enter your name" required maxlength="40" autocomplete="name" oninput="clearNameError()" />
+            </div>
+
+            <div class="form-group">
+              <label for="studentEmail">Email Address <span class="optional-badge">(Optional)</span></label>
+              <input type="email" id="studentEmail" placeholder="e.g. name@school.co.uk" maxlength="70" autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <div class="form-group">
+            <label for="topicDropdown">Separate Biology Topic Focus</label>
+            <select id="topicDropdown" onchange="selectedTopic = this.value">
+              <option value="ALL">All Separate Biology Topics (40 Questions)</option>
+              <option value="Culturing Microorganisms & Aseptic Technique">Culturing Microorganisms &amp; Aseptic Technique (22 Questions)</option>
+              <option value="Monoclonal Antibodies">Monoclonal Antibodies (18 Questions)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Select Question Count</label>
+            <div class="option-grid-3" id="lengthSelector">
+              <button type="button" class="choice-pill-btn active" data-count="10" onclick="selectLength(10, this)">
+                <strong>10 Questions</strong>
+                <span>Quick Separate Drill</span>
+              </button>
+              <button type="button" class="choice-pill-btn" data-count="20" onclick="selectLength(20, this)">
+                <strong>20 Questions</strong>
+                <span>Half Topic Set</span>
+              </button>
+              <button type="button" class="choice-pill-btn" data-count="40" onclick="selectLength(40, this)">
+                <strong>All Available Questions</strong>
+                <span>Full Separate Bank</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="start-action-footer">
+            <div id="loginError" class="error-banner" style="display:none;"></div>
+            <button type="submit" class="btn-primary full-width">Start Separate Biology Quiz →</button>
+          </div>
+        </form>
+
+        <div class="login-footer">
+          <span>Created by <strong>Mr Leek Science</strong></span>
+          <a href="https://mrleekscience.co.uk" target="_blank" rel="noopener noreferrer" class="site-link">Visit mrleekscience.co.uk →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: ACTIVE QUIZ ARENA -->
+    <section id="viewQuiz" class="view">
+      <div class="hud-bar">
+        <div class="hud-stats">
+          <div class="stat-pill">
+            <span class="stat-label">QUESTION</span>
+            <span class="stat-val" id="hudProgress">1 / 10</span>
+          </div>
+          <div class="stat-pill streak">
+            <span class="stat-label">STREAK</span>
+            <span class="stat-val" id="hudStreak">0 🔥</span>
+          </div>
+          <div class="stat-pill score">
+            <span class="stat-label">SCORE</span>
+            <span class="stat-val" id="hudScore">0</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">TIME</span>
+            <span class="stat-val" id="hudTimer">00:00</span>
+          </div>
+        </div>
+
+        <div class="lifelines">
+          <button id="btn5050" class="btn-tool" onclick="use5050()">⚡ 50/50 Hint</button>
+          <button id="btnClue" class="btn-tool" onclick="useClue()">🔬 Examiner Clue</button>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div id="progressBarFill" class="progress-fill" style="width: 10%;"></div>
+      </div>
+
+      <div class="arena-grid">
+        <div class="specimen-panel">
+          <div class="specimen-header">
+            <span class="specimen-tag" id="specimenTag">DIAGRAM 01</span>
+            <span class="specimen-topic" id="specimenTopic">Aseptic Technique</span>
+          </div>
+          <div id="specimenCanvas" class="specimen-canvas"></div>
+          <div id="clueBox" class="clue-box" style="display:none;"></div>
+          <div class="shortcut-hint">Keyboard shortcuts: Press <strong>1–4</strong> or <strong>A–D</strong> to answer, <strong>Enter</strong> for next</div>
+        </div>
+
+        <div class="question-panel">
+          <div class="q-meta">
+            <span class="aqa-ref" id="qRef">AQA 8461 • Biology Only</span>
+            <span class="category-badge" id="qCategoryBadge">Culturing Microorganisms</span>
+          </div>
+
+          <h2 id="questionText" class="question-text">Loading question...</h2>
+
+          <div id="optionsContainer" class="options-list"></div>
+
+          <div id="feedbackDrawer" class="feedback-drawer" style="display:none;">
+            <div class="feedback-title" id="feedbackTitle">Examiner Mark-Scheme Note</div>
+            <p id="feedbackText"></p>
+            <button id="btnNext" class="btn-primary" onclick="nextQuestion()">Next Question →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: RESULTS & DIAGNOSTIC DASHBOARD -->
+    <section id="viewResults" class="view">
+      <div class="results-wrapper">
+        <div class="results-card">
+          <div class="grade-ring">
+            <span class="grade-sub">EST. GRADE</span>
+            <strong id="resGrade">9</strong>
+          </div>
+          <h2 id="resHeadline">Separate Biology Session Complete!</h2>
+          <p id="resSubline" class="res-subline"></p>
+          <div id="resEmailDisplay" class="email-pill-display" style="display:none;"></div>
+
+          <div class="res-metrics">
+            <div class="metric-box">
+              <span>SCORE</span>
+              <strong id="resScore">0 / 10</strong>
+            </div>
+            <div class="metric-box">
+              <span>PERCENTAGE</span>
+              <strong id="resPercent">0%</strong>
+            </div>
+            <div class="metric-box">
+              <span>BEST STREAK</span>
+              <strong id="resStreak">0</strong>
+            </div>
+            <div class="metric-box">
+              <span>TOTAL TIME</span>
+              <strong id="resTime">00:00</strong>
+            </div>
+          </div>
+
+          <div class="res-actions">
+            <button id="btnRetryMissed" class="btn-retry-missed" style="display:none;" onclick="retryMissedQuestions()">
+              🎯 Retry Missed Questions (<span id="missedCountBadge">0</span>)
+            </button>
+            <button class="btn-primary" onclick="restartQuiz()">↻ Restart Full Quiz</button>
+            <button class="btn-ghost" onclick="copyReportSummary()">📋 Copy Summary</button>
+            <a id="btnEmailResults" class="btn-ghost" href="#">✉️ Email Results</a>
+            <button class="btn-ghost" onclick="resetToStart()">Change Topic / Length</button>
+          </div>
+
+          <div id="copyToast" class="copy-toast" style="display:none;">✓ Diagnostic summary copied to clipboard!</div>
+        </div>
+
+        <!-- TOPIC BREAKDOWN & REVISION TIPS -->
+        <div class="diagnostic-panel">
+          <h3 class="section-heading">📊 Separate Science Strengths &amp; Weaknesses</h3>
+          <p class="section-sub">Diagnostic breakdown across the AQA 8461 Biology-only Cell Biology topics with targeted mark-scheme advice.</p>
+          <div id="resultsTopicGrid" class="topic-cards-grid"></div>
+        </div>
+
+        <!-- FULL QUESTION REVIEW -->
+        <div class="review-panel">
+          <h3 class="section-heading">📝 Full Question Review</h3>
+          <p class="section-sub">Review every question attempted, compare your answer with the AQA mark scheme, and check key steps.</p>
+          <div id="reviewListContainer" class="review-list"></div>
+        </div>
+
+        <div class="results-footer-link">
+          More AQA GCSE Separate Biology resources at
+          <a href="https://mrleekscience.co.uk" target="_blank" rel="noopener noreferrer" class="site-link">mrleekscience.co.uk ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MID-QUIZ LIVE DIAGNOSTIC MODAL -->
+    <div id="analysisModal" class="modal-backdrop" style="display:none;" onclick="closeAnalysisOnBackdrop(event)">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div>
+            <h3>📊 Live Strengths &amp; Weaknesses</h3>
+            <p id="analysisSubtitle" style="font-size:0.84rem; color:var(--text-muted);">Current session diagnostic (AQA 8461)</p>
+          </div>
+          <button class="btn-close" onclick="closeAnalysisModal()">✕</button>
+        </div>
+
+        <div id="modalTopicGrid" class="topic-cards-grid" style="grid-template-columns: 1fr;"></div>
+
+        <div class="modal-footer">
+          <a href="https://mrleekscience.co.uk" target="_blank" rel="noopener noreferrer" class="site-link">mrleekscience.co.uk</a>
+          <button class="btn-primary" onclick="closeAnalysisModal()">Back to Quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SPECIMEN_SVGS = {
+      binaryfission: `
+        <svg viewBox="0 0 360 210" width="100%" height="100%">
+          <rect width="360" height="210" rx="14" fill="#080d1a"/>
+          <rect x="35" y="75" width="76" height="44" rx="22" fill="#132238" stroke="#38bdf8" stroke-width="2.5"/>
+          <text x="73" y="101" text-anchor="middle" fill="#bae6fd" font-size="10" font-family="sans-serif" font-weight="bold">1 Bacterium</text>
+          <path d="M122,97 L154,97" stroke="#10b981" stroke-width="2.5"/>
+          <polygon points="154,92 164,97 154,102" fill="#10b981"/>
+          <rect x="174" y="45" width="76" height="42" rx="21" fill="#132238" stroke="#10b981" stroke-width="2.5"/>
+          <rect x="174" y="108" width="76" height="42" rx="21" fill="#132238" stroke="#10b981" stroke-width="2.5"/>
+          <text x="295" y="72" text-anchor="middle" fill="#facc15" font-size="11" font-family="monospace" font-weight="bold">N = N₀ × 2ⁿ</text>
+          <text x="295" y="128" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="sans-serif">Every 20 mins</text>
+          <text x="180" y="188" text-anchor="middle" fill="#38bdf8" font-size="11" font-family="sans-serif" font-weight="bold">Binary Fission &amp; Exponential Growth</text>
+        </svg>`,
+      aseptic: `
+        <svg viewBox="0 0 360 210" width="100%" height="100%">
+          <rect width="360" height="210" rx="14" fill="#080d1a"/>
+          <!-- Bunsen flame -->
+          <rect x="75" y="138" width="30" height="36" rx="4" fill="#475569"/>
+          <path d="M90,68 C74,98 76,126 90,136 C104,126 106,98 90,68 Z" fill="#38bdf8" opacity="0.85"/>
+          <!-- Inoculating loop -->
+          <line x1="95" y1="98" x2="185" y2="75" stroke="#e2e8f0" stroke-width="2.5"/>
+          <circle cx="90" cy="99" r="6" fill="none" stroke="#facc15" stroke-width="2.5"/>
+          <!-- Inverted Petri dish -->
+          <ellipse cx="255" cy="112" rx="68" ry="22" fill="#0f2922" stroke="#10b981" stroke-width="2.5"/>
+          <ellipse cx="255" cy="124" rx="72" ry="22" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
+          <text x="255" y="74" text-anchor="middle" fill="#6ee7b7" font-size="10" font-family="sans-serif" font-weight="bold">Inverted Petri Dish (Max 25 °C)</text>
+          <text x="180" y="194" text-anchor="middle" fill="#facc15" font-size="11" font-family="sans-serif" font-weight="bold">Aseptic Technique &amp; Uncontaminated Culture</text>
+        </svg>`,
+      inhibition: `
+        <svg viewBox="0 0 360 210" width="100%" height="100%">
+          <rect width="360" height="210" rx="14" fill="#080d1a"/>
+          <!-- Agar plate lawn -->
+          <circle cx="145" cy="105" r="78" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
+          <!-- Clear zone of inhibition -->
+          <circle cx="145" cy="105" r="44" fill="#090d16" stroke="#10b981" stroke-width="2" stroke-dasharray="5 3"/>
+          <!-- Antibiotic disc -->
+          <circle cx="145" cy="105" r="10" fill="#f8fafc"/>
+          <line x1="101" y1="105" x2="189" y2="105" stroke="#facc15" stroke-width="1.5"/>
+          <text x="285" y="84" text-anchor="middle" fill="#10b981" font-size="11" font-family="sans-serif" font-weight="bold">Zone of Inhibition</text>
+          <text x="285" y="108" text-anchor="middle" fill="#facc15" font-size="12" font-family="monospace" font-weight="bold">Area = πr²</text>
+          <text x="285" y="128" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="sans-serif">r = diameter ÷ 2</text>
+        </svg>`,
+      hybridoma: `
+        <svg viewBox="0 0 360 210" width="100%" height="100%">
+          <rect width="360" height="210" rx="14" fill="#080d1a"/>
+          <circle cx="72" cy="64" r="26" fill="#1e3a8a" stroke="#38bdf8" stroke-width="2"/>
+          <text x="72" y="68" text-anchor="middle" fill="#bae6fd" font-size="9" font-family="sans-serif" font-weight="bold">Lymphocyte</text>
+          <circle cx="72" cy="144" r="26" fill="#581c87" stroke="#c084fc" stroke-width="2"/>
+          <text x="72" y="148" text-anchor="middle" fill="#f3e8ff" font-size="9" font-family="sans-serif" font-weight="bold">Tumour Cell</text>
+          <path d="M104,74 L148,96 M104,134 L148,112" stroke="#10b981" stroke-width="2"/>
+          <circle cx="185" cy="104" r="32" fill="#064e3b" stroke="#10b981" stroke-width="2.5"/>
+          <text x="185" y="101" text-anchor="middle" fill="#6ee7b7" font-size="9" font-family="sans-serif" font-weight="bold">Hybridoma</text>
+          <text x="185" y="113" text-anchor="middle" fill="#6ee7b7" font-size="9" font-family="sans-serif" font-weight="bold">Cell</text>
+          <path d="M222,104 L256,104" stroke="#facc15" stroke-width="2.5"/>
+          <polygon points="256,99 266,104 256,109" fill="#facc15"/>
+          <text x="310" y="96" text-anchor="middle" fill="#facc15" font-size="10" font-family="sans-serif" font-weight="bold">Cloned</text>
+          <text x="310" y="111" text-anchor="middle" fill="#facc15" font-size="10" font-family="sans-serif" font-weight="bold">Antibodies</text>
+          <text x="180" y="192" text-anchor="middle" fill="#38bdf8" font-size="11" font-family="sans-serif" font-weight="bold">Monoclonal Antibody Production</text>
+        </svg>`,
+      mabuses: `
+        <svg viewBox="0 0 360 210" width="100%" height="100%">
+          <rect width="360" height="210" rx="14" fill="#080d1a"/>
+          <!-- Target cell -->
+          <circle cx="135" cy="105" r="44" fill="#31102f" stroke="#fb7185" stroke-width="2.5"/>
+          <text x="135" y="109" text-anchor="middle" fill="#fecdd3" font-size="10" font-family="sans-serif" font-weight="bold">Target Antigen</text>
+          <!-- Y-shaped antibody -->
+          <path d="M235,105 L205,105 M205,105 L186,88 M205,105 L186,122" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
+          <!-- Toxic drug / fluorescent tag -->
+          <circle cx="248" cy="105" r="14" fill="#facc15" stroke="#fef08a" stroke-width="2"/>
+          <text x="248" y="109" text-anchor="middle" fill="#080d1a" font-size="9" font-family="sans-serif" font-weight="bold">Drug</text>
+          <text x="180" y="34" text-anchor="middle" fill="#10b981" font-size="11" font-family="sans-serif" font-weight="bold">Specific Binding to One Protein Antigen</text>
+          <text x="180" y="186" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="sans-serif">Diagnosis (hCG) • Fluorescent Research • Targeted Therapy</text>
+        </svg>`
+    };
+
+    const TOPIC_TIPS = {
+      "Culturing Microorganisms & Aseptic Technique":
+        "Key AQA 8461 mark-scheme rules: (1) Always halve the diameter first (r = d ÷ 2) before calculating Area = πr² with π = 3.14. (2) School incubators are set to a maximum of 25 °C to reduce the risk of growing harmful human pathogens. (3) Petri dishes are taped (not completely sealed) so oxygen enters and harmful anaerobic bacteria do not grow, and stored upside down so condensation does not drip onto the agar.",
+      "Monoclonal Antibodies":
+        "Key AQA 8461 mark-scheme rules: (1) Monoclonal antibodies are produced from a single clone of cells and bind to one specific protein antigen. (2) A mouse lymphocyte (makes the specific antibody) is fused with a fast-dividing tumour cell to make a hybridoma cell. (3) For evaluation questions, always mention that monoclonal antibodies have caused more side effects than expected (e.g., fever, vomiting, low blood pressure), limiting their widespread clinical use."
+    };
+
+    // 40 SEPARATE SCIENCE ONLY (AQA GCSE BIOLOGY 8461) CELL BIOLOGY QUESTIONS
+    const QUESTION_BANK = [
+      // === TOPIC A: CULTURING MICROORGANISMS & ASEPTIC TECHNIQUE (22 Questions) ===
+      {
+        id: 1,
+        ref: "AQA 8461 • 4.1.1.6 Culturing Microorganisms",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Binary Fission",
+        visualId: "binaryfission",
+        question: "By what process do bacteria multiply when provided with sufficient nutrients and a suitable temperature?",
+        options: [
+          "Simple cell division (binary fission), splitting into two cells as fast as once every 20 minutes.",
+          "Mitosis followed by meiosis inside a membrane-bound nucleus.",
+          "Budding from chloroplasts every 24 hours in bright sunlight.",
+          "Sexual fusion of two bacterial gametes to form a diploid zygote."
+        ],
+        correctIndex: 0,
+        clue: "Bacteria are prokaryotes without a nucleus and divide rapidly by splitting in two.",
+        explanation: "Bacteria multiply by simple cell division (binary fission) as often as once every 20 minutes if they have enough nutrients and a suitable temperature."
+      },
+      {
+        id: 2,
+        ref: "AQA 8461 • 4.1.1.6 Culturing Microorganisms",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Culture Media",
+        visualId: "aseptic",
+        question: "Which two culture media are commonly used to grow bacteria in a laboratory, and what must they contain?",
+        options: [
+          "A nutrient broth solution or as colonies on an agar gel plate, containing carbohydrates, minerals, proteins, and vitamins.",
+          "Pure distilled water or dry filter paper, containing only dissolved oxygen and sodium chloride.",
+          "Concentrated hydrochloric acid or ethanol, containing cellulose and chlorophyll.",
+          "Liquid paraffin or sterile sand, containing only starch and distilled water."
+        ],
+        correctIndex: 0,
+        clue: "Bacteria need an energy source (carbohydrates) and raw materials for growth (minerals, proteins, vitamins).",
+        explanation: "Bacteria can be grown in a nutrient broth solution or as colonies on an agar gel plate. Uncontaminated cultures require carbohydrates as an energy source, plus minerals, proteins, and vitamins."
+      },
+      {
+        id: 3,
+        ref: "AQA 8461 • 4.1.1.6 Binary Fission Maths",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Calculating Bacterial Populations",
+        visualId: "binaryfission",
+        question: "A single bacterium has a mean division time of 20 minutes. How many bacteria will be present after 2 hours under ideal conditions?",
+        options: [
+          "64 bacteria",
+          "12 bacteria",
+          "32 bacteria",
+          "128 bacteria"
+        ],
+        correctIndex: 0,
+        clue: "2 hours = 120 minutes. Divide 120 by 20 to find the number of divisions (n), then calculate 2ⁿ.",
+        explanation: "2 hours = 120 minutes. Number of divisions = 120 ÷ 20 = 6. Population = 1 × 2⁶ = 64 bacteria."
+      },
+      {
+        id: 4,
+        ref: "AQA 8461 • 4.1.1.6 Binary Fission Maths",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Calculating Bacterial Populations",
+        visualId: "binaryfission",
+        question: "A culture starts with 50 bacteria that divide every 30 minutes. How many bacteria will there be after 3 hours?",
+        options: [
+          "3,200 bacteria",
+          "300 bacteria",
+          "1,600 bacteria",
+          "6,400 bacteria"
+        ],
+        correctIndex: 0,
+        clue: "3 hours = 180 minutes (6 divisions). Multiply the starting number (50) by 2⁶.",
+        explanation: "3 hours = 180 minutes ÷ 30 minutes = 6 divisions. Total bacteria = 50 × 2⁶ = 50 × 64 = 3,200 bacteria."
+      },
+      {
+        id: 5,
+        ref: "AQA 8461 • 4.1.1.6 Binary Fission Maths",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Standard Form Population",
+        visualId: "binaryfission",
+        question: "A bacterial population starts with 1 × 10³ cells and undergoes 10 divisions. Express the final number of bacteria in standard form.",
+        options: [
+          "1.024 × 10⁶",
+          "1.024 × 10⁴",
+          "2.0 × 10¹³",
+          "1.0 × 10³⁰"
+        ],
+        correctIndex: 0,
+        clue: "2¹⁰ = 1,024. Multiply 1,024 by 1 × 10³ and adjust the decimal point for standard form.",
+        explanation: "2¹⁰ = 1,024. Final population = 1,000 × 1,024 = 1,024,000 = 1.024 × 10⁶ bacteria."
+      },
+      {
+        id: 6,
+        ref: "AQA 8461 • 4.1.1.6 Binary Fission Maths",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Mean Division Time",
+        visualId: "binaryfission",
+        question: "A culture starts with 1 bacterium and grows to 256 bacteria in 4 hours. What is the mean division time of this bacterium in minutes?",
+        options: [
+          "30 minutes",
+          "15 minutes",
+          "20 minutes",
+          "45 minutes"
+        ],
+        correctIndex: 0,
+        clue: "Find how many times you double 1 to reach 256 (2⁸ = 256), then divide 240 minutes by that number.",
+        explanation: "2⁸ = 256, so 8 divisions occurred. 4 hours = 240 minutes. Mean division time = 240 ÷ 8 = 30 minutes."
+      },
+      {
+        id: 7,
+        ref: "AQA 8461 • 4.1.1.6 Aseptic Technique",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Sterilising Equipment",
+        visualId: "aseptic",
+        question: "Why must Petri dishes and culture media be sterilised (e.g., heated in an autoclave) before use?",
+        options: [
+          "To kill any unwanted microorganisms already present so they do not contaminate the culture.",
+          "To melt the plastic Petri dish so oxygen can diffuse through the base.",
+          "To denature the nutrients in the agar so bacteria divide more slowly.",
+          "To cool the agar down to 0 °C before inoculating with bacteria."
+        ],
+        correctIndex: 0,
+        clue: "Uncontaminated cultures require removing all pre-existing microbes from the dish and agar.",
+        explanation: "Petri dishes and culture media must be sterilised before use to kill unwanted microorganisms that would otherwise contaminate the culture and compete with the bacteria being studied."
+      },
+      {
+        id: 8,
+        ref: "AQA 8461 • 4.1.1.6 Aseptic Technique",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Inoculating Loops",
+        visualId: "aseptic",
+        question: "How and why is an inoculating loop sterilised before transferring microorganisms to an agar plate?",
+        options: [
+          "By passing it through a Bunsen burner flame until it glows red hot, to kill any unwanted microorganisms on the loop.",
+          "By dipping it into concentrated sugar solution, to provide nutrients for the bacteria.",
+          "By wiping it with a damp paper towel, to remove excess agar gel.",
+          "By placing it in a freezer at −20 °C, to stop bacteria dividing."
+        ],
+        correctIndex: 0,
+        clue: "High heat from a blue Bunsen flame destroys all microbes on the metal wire.",
+        explanation: "Inoculating loops used to transfer microorganisms to the media must be sterilised by passing them through a flame (and allowed to cool before touching the bacteria)."
+      },
+      {
+        id: 9,
+        ref: "AQA 8461 • 4.1.1.6 Aseptic Technique",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Securing the Petri Dish Lid",
+        visualId: "aseptic",
+        question: "Why should the lid of a Petri dish be secured with adhesive tape, but NOT sealed all the way around?",
+        options: [
+          "To prevent microorganisms from the air entering or escaping, while still allowing oxygen in so harmful anaerobic bacteria do not grow.",
+          "To keep water vapour trapped inside while letting airborne fungi enter freely.",
+          "To stop carbon dioxide escaping so the bacteria can carry out photosynthesis.",
+          "To prevent the glass lid from cracking when placed in a 100 °C oven."
+        ],
+        correctIndex: 0,
+        clue: "Think about what happens if oxygen is completely excluded from a warm, nutrient-rich dish.",
+        explanation: "The lid is secured with tape to prevent airborne microorganisms contaminating the plate (or cultured microbes escaping), while leaving gaps allows oxygen in so dangerous anaerobic pathogens are not encouraged to grow."
+      },
+      {
+        id: 10,
+        ref: "AQA 8461 • 4.1.1.6 Aseptic Technique",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Inverting Petri Dishes",
+        visualId: "aseptic",
+        question: "Why should inoculated Petri dishes be stored upside down (inverted) during incubation?",
+        options: [
+          "To stop condensation droplets from falling onto the agar surface and disrupting the bacterial colonies.",
+          "To prevent oxygen from reaching the bacteria growing on the agar.",
+          "To force the agar gel to slide onto the plastic lid.",
+          "To keep the bacteria away from overhead fluorescent light."
+        ],
+        correctIndex: 0,
+        clue: "Water droplets forming on the inside of the lid would drip onto the surface below if stored right-way up.",
+        explanation: "Storing Petri dishes upside down prevents condensation that forms on the lid from dripping onto the agar surface, which would wash across and merge/disrupt the bacterial colonies."
+      },
+      {
+        id: 11,
+        ref: "AQA 8461 • 4.1.1.6 Incubation Temperature",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "School vs Industrial Incubation",
+        visualId: "aseptic",
+        question: "In school laboratories, at what maximum temperature should bacterial cultures be incubated, and why?",
+        options: [
+          "A maximum of 25 °C, to reduce the risk of growing harmful pathogens that thrive at human body temperature (37 °C).",
+          "A maximum of 37 °C, because bacteria cannot divide at any temperature below human body temperature.",
+          "A maximum of 10 °C, because higher temperatures immediately kill all bacteria.",
+          "A maximum of 60 °C, to sterilise the agar while the colonies grow."
+        ],
+        correctIndex: 0,
+        clue: "Human pathogens grow best around 37 °C.",
+        explanation: "In school laboratories, cultures should generally be incubated at no more than 25 °C because harmful pathogens capable of infecting humans grow well at 37 °C."
+      },
+      {
+        id: 12,
+        ref: "AQA 8461 • 4.1.1.6 Incubation Temperature",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Industrial Conditions",
+        visualId: "aseptic",
+        question: "Why do industrial facilities and hospital microbiology labs often incubate bacteria at higher temperatures (such as 35–37 °C) than school labs?",
+        options: [
+          "They have specialist containment equipment, and higher temperatures increase enzyme activity so bacteria grow much faster.",
+          "Bacteria in industrial labs have no enzymes and require heat to melt their cell walls.",
+          "Temperatures above 35 °C prevent any human pathogens from surviving.",
+          "Lower temperatures cause nutrient broth to turn into solid agar."
+        ],
+        correctIndex: 0,
+        clue: "Higher temperature increases the rate of chemical reactions (enzyme activity) for binary fission.",
+        explanation: "In industrial conditions, higher temperatures can be safely used with containment facilities to produce much faster bacterial growth."
+      },
+      {
+        id: 13,
+        ref: "AQA 8461 • Required Practical 2",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Required Practical: Antiseptics",
+        visualId: "inhibition",
+        question: "In Required Practical 2, filter paper discs soaked in different antiseptics are placed on an agar plate spread with bacteria. Why is one disc soaked only in sterile water?",
+        options: [
+          "As a control, to show that it is the antiseptic—and not the filter paper disc or water—that inhibits bacterial growth.",
+          "To provide extra water so bacteria grow over the entire lid.",
+          "To neutralise the antibiotics on the neighbouring discs.",
+          "To stain the clear zones so they can be measured with a ruler."
+        ],
+        correctIndex: 0,
+        clue: "Every valid scientific investigation needs a baseline comparison with no active chemical.",
+        explanation: "The sterile water disc acts as a control to confirm that any clear zone around the other discs is caused by the antiseptic/antibiotic itself rather than the paper disc or moisture."
+      },
+      {
+        id: 14,
+        ref: "AQA 8461 • Required Practical 2",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Zones of Inhibition",
+        visualId: "inhibition",
+        question: "What does a larger clear zone (zone of inhibition) around an antibiotic disc on a bacterial lawn indicate?",
+        options: [
+          "The antibiotic is more effective at killing or preventing the growth of that bacterium.",
+          "The bacteria have mutated to become completely resistant to the antibiotic.",
+          "The antibiotic diffused more slowly through the agar gel.",
+          "The agar gel contained more carbohydrates in that region."
+        ],
+        correctIndex: 0,
+        clue: "A clear circle means no bacterial colonies were able to grow there.",
+        explanation: "A larger clear zone of inhibition shows that a greater area of bacteria was killed or prevented from dividing, meaning that antibiotic or antiseptic is more effective."
+      },
+      {
+        id: 15,
+        ref: "AQA 8461 • Required Practical 2 Maths",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Calculating Cross-Sectional Area",
+        visualId: "inhibition",
+        question: "A circular clear zone of inhibition has a diameter of 20 mm. Using π = 3.14, what is the cross-sectional area of this clear zone?",
+        options: [
+          "314 mm²",
+          "1,256 mm²",
+          "62.8 mm²",
+          "100 mm²"
+        ],
+        correctIndex: 0,
+        clue: "Convert diameter to radius first: r = 20 ÷ 2 = 10 mm. Then calculate Area = πr².",
+        explanation: "Radius r = 20 ÷ 2 = 10 mm. Area = πr² = 3.14 × 10² = 3.14 × 100 = 314 mm²."
+      },
+      {
+        id: 16,
+        ref: "AQA 8461 • Required Practical 2 Maths",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Calculating Cross-Sectional Area",
+        visualId: "inhibition",
+        question: "A bacterial colony on an agar plate has a radius of 4.0 mm. Using π = 3.14, calculate the cross-sectional area of the colony.",
+        options: [
+          "50.24 mm²",
+          "12.56 mm²",
+          "25.12 mm²",
+          "200.96 mm²"
+        ],
+        correctIndex: 0,
+        clue: "The radius is already given as 4.0 mm. Square 4.0 first (4² = 16), then multiply by 3.14.",
+        explanation: "Area = πr² = 3.14 × 4.0² = 3.14 × 16 = 50.24 mm²."
+      },
+      {
+        id: 17,
+        ref: "AQA 8461 • Required Practical 2 Maths",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Calculating Cross-Sectional Area",
+        visualId: "inhibition",
+        question: "A clear zone around an antiseptic disc has a diameter of 12 mm. Using π = 3.14, what is its area?",
+        options: [
+          "113.04 mm²",
+          "452.16 mm²",
+          "37.68 mm²",
+          "18.84 mm²"
+        ],
+        correctIndex: 0,
+        clue: "Avoid the common exam trap: divide 12 mm by 2 to get radius = 6 mm before squaring!",
+        explanation: "Radius r = 12 ÷ 2 = 6 mm. Area = πr² = 3.14 × 6² = 3.14 × 36 = 113.04 mm²."
+      },
+      {
+        id: 18,
+        ref: "AQA 8461 • Required Practical 2",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Aseptic Lid Handling",
+        visualId: "aseptic",
+        question: "When lifting the lid of a Petri dish to place antibiotic discs onto the agar, why should the lid only be lifted slightly at an angle rather than placed flat on the bench?",
+        options: [
+          "To prevent airborne bacteria or fungal spores from landing on the agar or inside the lid.",
+          "To stop the agar gel from evaporating into a gas.",
+          "To keep the forceps warm in the Bunsen flame.",
+          "To prevent light from damaging the antibiotic discs."
+        ],
+        correctIndex: 0,
+        clue: "Working close to a Bunsen flame and angling the lid acts as a physical shield against falling microbes.",
+        explanation: "Lifting the lid only slightly at an angle (near a Bunsen flame) prevents microorganisms in the air from settling onto the agar surface and contaminating the culture."
+      },
+      {
+        id: 19,
+        ref: "AQA 8461 • Required Practical 2",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Control Variables",
+        visualId: "inhibition",
+        question: "When comparing the effectiveness of three different antiseptics on an agar plate, which variables must be kept constant?",
+        options: [
+          "The size of the filter paper discs, the volume/concentration of antiseptic on each disc, and the incubation temperature and time.",
+          "The diameter of the clear zone produced and the type of antiseptic used.",
+          "Only the colour of the adhesive tape used to secure the Petri dish.",
+          "The species of bacteria on half the plate and the pH of the Bunsen flame."
+        ],
+        correctIndex: 0,
+        clue: "Control variables are everything kept the same except the independent variable (type of antiseptic).",
+        explanation: "To ensure a valid comparison, disc diameter, volume/concentration of antiseptic, bacterial strain, and incubation time/temperature must all be controlled."
+      },
+      {
+        id: 20,
+        ref: "AQA 8461 • Required Practical 2",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Measuring Clear Zones",
+        visualId: "inhibition",
+        question: "Why should you measure the diameter of a clear zone of inhibition twice at right angles (perpendicular) and calculate a mean?",
+        options: [
+          "Because the clear zone may not be a perfect circle, so taking two perpendicular measurements gives a more accurate mean diameter.",
+          "Because doubling the diameter automatically gives the cross-sectional area.",
+          "Because one measurement is always taken with the lid off and one with the lid on.",
+          "To convert millimetres directly into micrometres."
+        ],
+        correctIndex: 0,
+        clue: "Bacterial growth around a disc can be slightly irregular rather than geometrically circular.",
+        explanation: "Clear zones are often slightly uneven; measuring the diameter twice at 90° to each other and finding the mean improves accuracy before calculating πr²."
+      },
+      {
+        id: 21,
+        ref: "AQA 8461 • 4.1.1.6 Culturing Microorganisms",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Flame Sterilisation",
+        visualId: "aseptic",
+        question: "Why must a flame-sterilised inoculating loop be allowed to cool for a few seconds before dipping it into a bacterial broth?",
+        options: [
+          "So the red-hot metal does not kill the bacteria you are trying to transfer onto the agar plate.",
+          "So the loop can absorb oxygen from the air.",
+          "So the metal wire shrinks to fit inside the Petri dish.",
+          "So the agar gel does not become too cold."
+        ],
+        correctIndex: 0,
+        clue: "A glowing red loop is over 800 °C—far above the lethal temperature for bacteria.",
+        explanation: "If the loop is still hot when it touches the bacterial culture, it will kill the bacteria being sampled and prevent any colonies from growing."
+      },
+      {
+        id: 22,
+        ref: "AQA 8461 • 4.1.1.6 Binary Fission Maths",
+        category: "Culturing Microorganisms & Aseptic Technique",
+        topic: "Calculating Bacterial Populations",
+        visualId: "binaryfission",
+        question: "A bacterial culture has a mean division time of 15 minutes. If you start with 100 bacteria, how many bacteria will there be after 1 hour?",
+        options: [
+          "1,600 bacteria",
+          "400 bacteria",
+          "800 bacteria",
+          "3,200 bacteria"
+        ],
+        correctIndex: 0,
+        clue: "1 hour = 60 minutes. 60 ÷ 15 = 4 divisions. Calculate 100 × 2⁴.",
+        explanation: "1 hour = 60 minutes ÷ 15 minutes = 4 divisions. 100 × 2⁴ = 100 × 16 = 1,600 bacteria."
+      },
+
+      // === TOPIC B: MONOCLONAL ANTIBODIES (18 Questions) ===
+      {
+        id: 23,
+        ref: "AQA 8461 • 4.3.2.1 Producing Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Definition of Monoclonal Antibodies",
+        visualId: "mabuses",
+        question: "What are monoclonal antibodies?",
+        options: [
+          "Identical antibodies produced from a single clone of cells that are specific to one binding site on one specific protein antigen.",
+          "A mixture of different antibodies produced by many types of white blood cells against several pathogens.",
+          "Antibiotics extracted from fungi that kill all species of bacteria in the bloodstream.",
+          "Red blood cells cloned from human bone marrow to carry oxygen to tumours."
+        ],
+        correctIndex: 0,
+        clue: "'Mono-' means single, and 'clonal' refers to genetically identical cells from one parent cell.",
+        explanation: "Monoclonal antibodies are produced from a single clone of cells. They are specific to one binding site on one specific protein antigen, allowing them to target a specific chemical or specific cells in the body."
+      },
+      {
+        id: 24,
+        ref: "AQA 8461 • 4.3.2.1 Producing Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Stimulating Lymphocytes",
+        visualId: "hybridoma",
+        question: "What is the very first step in producing monoclonal antibodies in a laboratory?",
+        options: [
+          "Injecting a mouse with a specific antigen to stimulate mouse lymphocytes to produce a particular antibody.",
+          "Fusing a human red blood cell directly with a bacterial plasmid.",
+          "Injecting a human patient with tumour cells to stimulate antibody production.",
+          "Growing plant meristem cells on nutrient agar containing antibiotics."
+        ],
+        correctIndex: 0,
+        clue: "An animal immune system must first recognise the target antigen and make lymphocytes against it.",
+        explanation: "First, a mouse is injected with a chosen antigen, stimulating its lymphocytes (white blood cells) to make a specific antibody against that antigen."
+      },
+      {
+        id: 25,
+        ref: "AQA 8461 • 4.3.2.1 Producing Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Hybridoma Formation",
+        visualId: "hybridoma",
+        question: "How is a hybridoma cell formed during monoclonal antibody production?",
+        options: [
+          "By combining (fusing) a specific antibody-producing mouse lymphocyte with a particular kind of tumour cell.",
+          "By fusing two bacterial cells together using high-temperature autoclaving.",
+          "By combining a human egg cell with a sperm cell during therapeutic cloning.",
+          "By fusing a red blood cell with a platelet inside a Petri dish."
+        ],
+        correctIndex: 0,
+        clue: "One parent cell supplies the specific antibody; the other supplies rapid, continuous cell division.",
+        explanation: "A specific mouse lymphocyte is combined with a particular kind of tumour cell (myeloma) to make a cell called a hybridoma cell."
+      },
+      {
+        id: 26,
+        ref: "AQA 8461 • 4.3.2.1 Producing Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Why Tumour Cells Are Used",
+        visualId: "hybridoma",
+        question: "Why is a lymphocyte fused with a tumour cell rather than simply culturing the lymphocyte on its own?",
+        options: [
+          "Lymphocytes do not divide easily once they start making antibodies, whereas tumour cells divide rapidly and continuously.",
+          "Tumour cells produce the specific antigen needed to trigger an immune response.",
+          "Lymphocytes lack DNA and require a tumour cell nucleus to survive.",
+          "Tumour cells prevent the antibodies from binding to human proteins."
+        ],
+        correctIndex: 0,
+        clue: "Think about the key characteristic of cancer/tumour cells: rapid, uncontrollable mitosis.",
+        explanation: "Normal antibody-producing lymphocytes cannot divide readily, whereas tumour cells divide rapidly. Fusing them creates a hybridoma that both divides rapidly and makes the desired antibody."
+      },
+      {
+        id: 27,
+        ref: "AQA 8461 • 4.3.2.1 Producing Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Cloning & Harvesting",
+        visualId: "hybridoma",
+        question: "Once a single hybridoma cell has been selected, what are the final steps to obtain monoclonal antibodies?",
+        options: [
+          "The single hybridoma cell is cloned to produce many identical cells that all make the same antibody, which is then collected and purified.",
+          "The hybridoma cell is injected directly into the patient's bloodstream to divide inside their organs.",
+          "The hybridoma cell is heated to 100 °C to release the antibodies from its cell wall.",
+          "The hybridoma cell undergoes meiosis to produce four different types of antibody."
+        ],
+        correctIndex: 0,
+        clue: "All daughter cells from a single hybridoma clone produce the exact same antibody.",
+        explanation: "Single hybridoma cells are cloned to produce many identical cells that all produce the same antibody. A large amount of the antibody can then be collected and purified."
+      },
+      {
+        id: 28,
+        ref: "AQA 8461 • 4.3.2.2 Uses of Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Pregnancy Tests",
+        visualId: "mabuses",
+        question: "How do monoclonal antibodies work in a home pregnancy test kit?",
+        options: [
+          "They bind specifically to the hormone hCG found in the urine of pregnant women, triggering a colour change.",
+          "They destroy bacteria in the urine sample to produce a blue line.",
+          "They measure the concentration of glucose and urea in the blood plasma.",
+          "They bind to red blood cells in urine to form a visible clot."
+        ],
+        correctIndex: 0,
+        clue: "Early embryos/placentas release a specific hormone called hCG into the mother's blood and urine.",
+        explanation: "Pregnancy tests use monoclonal antibodies specific to the hormone hCG (human chorionic gonadotropin), which is present in urine only during pregnancy."
+      },
+      {
+        id: 29,
+        ref: "AQA 8461 • 4.3.2.2 Uses of Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Laboratory Diagnosis",
+        visualId: "mabuses",
+        question: "Besides pregnancy tests, how are monoclonal antibodies used in hospital laboratories for diagnosis?",
+        options: [
+          "To measure the levels of hormones and other chemicals in blood, or to detect specific pathogens.",
+          "To sterilise surgical instruments before operations.",
+          "To replace damaged heart muscle tissue after a heart attack.",
+          "To sequence the entire human genome in 20 minutes."
+        ],
+        correctIndex: 0,
+        clue: "Their ability to bind to one specific chemical or pathogen marker makes them ideal diagnostic sensors.",
+        explanation: "In laboratories, monoclonal antibodies are used to measure levels of hormones and other chemicals in blood, or to detect pathogens."
+      },
+      {
+        id: 30,
+        ref: "AQA 8461 • 4.3.2.2 Uses of Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Scientific Research",
+        visualId: "mabuses",
+        question: "How do scientists use monoclonal antibodies in research to locate or identify specific molecules inside a cell or tissue?",
+        options: [
+          "By binding the monoclonal antibodies to a fluorescent dye so the target molecules glow under a microscope.",
+          "By attaching the monoclonal antibodies to iron filings and pulling the cells apart with a magnet.",
+          "By dissolving the cell membrane with monoclonal antibodies and weighing the nucleus.",
+          "By using monoclonal antibodies to convert carbohydrates into proteins."
+        ],
+        correctIndex: 0,
+        clue: "Think about how researchers make invisible target molecules visible under UV/fluorescence microscopy.",
+        explanation: "In research, monoclonal antibodies can be bound to a fluorescent dye to locate or identify specific molecules in a cell or tissue."
+      },
+      {
+        id: 31,
+        ref: "AQA 8461 • 4.3.2.2 Uses of Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Targeted Cancer Treatment",
+        visualId: "mabuses",
+        question: "How can monoclonal antibodies be used to treat cancer without harming healthy body cells?",
+        options: [
+          "They are bound to a radioactive substance, a toxic drug, or a chemical that stops cells growing and dividing, delivering it specifically to cancer cells.",
+          "They stimulate healthy body cells to divide faster so they outcompete the tumour.",
+          "They digest the cellulose cell wall surrounding human cancer cells.",
+          "They lower the patient's body temperature to 25 °C so cancer cells stop dividing."
+        ],
+        correctIndex: 0,
+        clue: "Cancer cells have specific tumour antigens on their membranes that healthy cells lack.",
+        explanation: "For cancer treatment, monoclonal antibodies can be bound to a radioactive substance, a toxic drug, or a chemical that stops cells growing and dividing. They deliver the substance specifically to cancer cells without harming other cells."
+      },
+      {
+        id: 32,
+        ref: "AQA 8461 • 4.3.2.2 Uses of Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Advantage Over Radiotherapy/Chemotherapy",
+        visualId: "mabuses",
+        question: "What is the main advantage of using drug-linked monoclonal antibodies to treat cancer compared with standard chemotherapy?",
+        options: [
+          "The toxic drug is delivered specifically to cancer cells, reducing damage to healthy body cells.",
+          "Monoclonal antibodies can be taken as a sweet syrup with zero side effects.",
+          "Standard chemotherapy only targets bacterial infections, not human tumours.",
+          "Monoclonal antibodies permanently prevent any future mutations in DNA."
+        ],
+        correctIndex: 0,
+        clue: "Traditional chemotherapy kills all rapidly dividing healthy cells (such as hair follicles and gut lining) as well as cancer cells.",
+        explanation: "Because monoclonal antibodies bind only to specific antigens on cancer cells, they deliver toxic drugs or radiation directly to the tumour while sparing healthy cells."
+      },
+      {
+        id: 33,
+        ref: "AQA 8461 • 4.3.2.2 Evaluation of Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Side Effects & Limitations",
+        visualId: "hybridoma",
+        question: "Why are monoclonal antibodies NOT yet as widely used in medical treatments as scientists originally hoped?",
+        options: [
+          "They create more side effects than expected (such as fever, vomiting, and low blood pressure).",
+          "They are unable to bind to specific antigens on human cells.",
+          "They can only be produced using human embryonic stem cells.",
+          "They break down immediately when exposed to oxygen in the blood."
+        ],
+        correctIndex: 0,
+        clue: "Because mouse lymphocytes are used to make them, the human immune system can react adversely.",
+        explanation: "Monoclonal antibodies create more side effects than expected (e.g., fever, vomiting, low blood pressure, immune reactions to mouse proteins), which has limited their widespread use."
+      },
+      {
+        id: 34,
+        ref: "AQA 8461 • 4.3.2.2 Evaluation of Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Ethical & Practical Issues",
+        visualId: "hybridoma",
+        question: "Which statement describes an ethical concern associated with producing monoclonal antibodies?",
+        options: [
+          "The process involves injecting mice with antigens and inducing tumour growth to harvest hybridoma cells.",
+          "The process requires destroying human embryos at 14 days old.",
+          "The process releases greenhouse gases from fermenting nutrient broth.",
+          "The process causes antibiotic resistance in soil bacteria."
+        ],
+        correctIndex: 0,
+        clue: "Consider the animal welfare aspect of Step 1 and Step 2 of the production method.",
+        explanation: "Producing monoclonal antibodies requires the use of mice (injecting antigens and harvesting lymphocytes/tumour cells), raising animal welfare concerns for some people."
+      },
+      {
+        id: 35,
+        ref: "AQA 8461 • 4.3.2.1 Producing Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Specificity of Binding",
+        visualId: "mabuses",
+        question: "Why will a monoclonal antibody designed to bind to a prostate cancer antigen NOT bind to a healthy liver cell?",
+        options: [
+          "The antibody's binding site has a specific complementary shape that fits only one particular protein antigen.",
+          "Healthy liver cells do not have a cell membrane.",
+          "Liver cells actively pump antibodies out using mitochondria.",
+          "Monoclonal antibodies only work inside urine samples, not in solid organs."
+        ],
+        correctIndex: 0,
+        clue: "Antibody–antigen binding works like an enzyme–substrate lock-and-key mechanism.",
+        explanation: "Each monoclonal antibody is specific to one binding site on one specific protein antigen; healthy liver cells lack that complementary antigen."
+      },
+      {
+        id: 36,
+        ref: "AQA 8461 • 4.3.2.1 Producing Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Sequence of Production",
+        visualId: "hybridoma",
+        question: "Which sequence shows the correct order of steps in making monoclonal antibodies?",
+        options: [
+          "Inject mouse with antigen → isolate lymphocytes → fuse with tumour cells to form hybridomas → clone single hybridoma → collect and purify antibodies.",
+          "Fuse mouse skin cell with bacterium → inject into human → collect blood plasma → clone lymphocytes.",
+          "Clone tumour cells → inject into mouse → extract hCG hormone → fuse with red blood cells.",
+          "Purify antibodies → inject into agar plate → incubate at 25 °C → fuse with lymphocytes."
+        ],
+        correctIndex: 0,
+        clue: "Start with immunising the mouse, then fuse lymphocyte + tumour cell, then clone the hybridoma.",
+        explanation: "The correct order is: antigen injection into mouse → isolate antibody-producing lymphocytes → fuse with tumour cells to make hybridomas → clone single hybridoma cell → collect and purify antibodies."
+      },
+      {
+        id: 37,
+        ref: "AQA 8461 • 4.3.2.2 Uses of Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Mechanism of Action in Cancer",
+        visualId: "mabuses",
+        question: "Apart from carrying a toxic drug or radioactive substance, what is the third way a monoclonal antibody can stop cancer cells?",
+        options: [
+          "By carrying a chemical that stops cells growing and dividing (or blocking chemical signals that stimulate cell division).",
+          "By converting cancer cells into prokaryotic bacteria.",
+          "By causing cancer cells to fill with chlorophyll and photosynthesise.",
+          "By fusing cancer cells with healthy nerve cells."
+        ],
+        correctIndex: 0,
+        clue: "Check the exact three payloads listed in the AQA 8461 specification for cancer treatment.",
+        explanation: "AQA 8461 states that monoclonal antibodies can be bound to: (1) a radioactive substance, (2) a toxic drug, or (3) a chemical which stops cells growing and dividing."
+      },
+      {
+        id: 38,
+        ref: "AQA 8461 • 4.3.2.2 Evaluation of Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Humanising Mouse Antibodies",
+        visualId: "hybridoma",
+        question: "Why can injecting unmodified mouse monoclonal antibodies into a human patient trigger unwanted side effects?",
+        options: [
+          "The patient's immune system recognises the mouse antibody proteins as foreign antigens and mounts an immune response.",
+          "Mouse antibodies are too large to fit inside human blood vessels.",
+          "Mouse antibodies digest haemoglobin inside red blood cells.",
+          "Mouse antibodies cause human cells to undergo binary fission."
+        ],
+        correctIndex: 0,
+        clue: "Proteins from another species act as foreign antigens in the human bloodstream.",
+        explanation: "Because the antibodies are originally made by mouse lymphocytes, the human immune system may recognise the mouse proteins as foreign, causing immune reactions and side effects."
+      },
+      {
+        id: 39,
+        ref: "AQA 8461 • 4.3.2.2 Uses of Monoclonal Antibodies",
+        category: "Monoclonal Antibodies",
+        topic: "Detecting Pathogens",
+        visualId: "mabuses",
+        question: "How can monoclonal antibodies be used to quickly identify whether a patient is infected with a specific virus (such as HIV or influenza)?",
+        options: [
+          "Monoclonal antibodies specific to the viral antigens bind to the virus in a blood/swab sample, producing a measurable colour or fluorescence signal.",
+          "Monoclonal antibodies kill the virus by raising the blood temperature to 60 °C.",
+          "Monoclonal antibodies dissolve the patient's white blood cells so the virus can be seen with the naked eye.",
+          "Monoclonal antibodies turn viral DNA into starch which turns blue-black with iodine."
+        ],
+        correctIndex: 0,
+        clue: "Viruses carry unique protein antigens on their outer protein coat.",
+        explanation: "Monoclonal antibodies complementary to a specific pathogen's antigens bind directly to the pathogen in clinical samples, enabling rapid laboratory diagnosis."
+      },
+      {
+        id: 40,
+        ref: "AQA 8461 • 4.3.2",
+        category: "Monoclonal Antibodies",
+        topic: "Summary Comparison",
+        visualId: "hybridoma",
+        question: "What is a 'hybridoma' cell?",
+        options: [
+          "A cell formed by fusing an antibody-producing lymphocyte with a tumour cell, combining antibody production with rapid division.",
+          "A bacterial cell containing two circular plasmids and a flagellum.",
+          "A plant meristem cell fused with a root hair cell.",
+          "A human white blood cell infected by a radioactive virus."
+        ],
+        correctIndex: 0,
+        clue: "'Hybrid' = combination of two different cell types; '-oma' = tumour cell.",
+        explanation: "A hybridoma cell is created by fusing a specific mouse lymphocyte with a tumour cell so it can divide rapidly and produce large quantities of one specific monoclonal antibody."
+      }
+    ];
+
+    let selectedTopic = "ALL";
+    let selectedQuestionCount = 10;
+    let currentUser = { name: "", email: "" };
+    let quizQuestions = [];
+    let currentIdx = 0;
+    let score = 0;
+    let streak = 0;
+    let bestStreak = 0;
+    let answeredCurrent = false;
+    let timerInterval = null;
+    let elapsedSeconds = 0;
+    let topicStats = {};
+    let sessionHistory = [];
+    let isMissedRetryMode = false;
+
+    function selectLength(count, btnEl) {
+      selectedQuestionCount = count;
+      document.querySelectorAll("#lengthSelector .choice-pill-btn").forEach(b => b.classList.remove("active"));
+      btnEl.classList.add("active");
+    }
+
+    function showView(viewName) {
+      document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+      document.getElementById(viewName).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function clearNameError() {
+      const nameInput = document.getElementById("studentName");
+      const errBox = document.getElementById("loginError");
+      nameInput.classList.remove("input-error");
+      errBox.style.display = "none";
+    }
+
+    function handleStart(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById("studentName");
+      const rawName = nameInput.value.trim();
+      const rawEmail = document.getElementById("studentEmail").value.trim();
+      const errBox = document.getElementById("loginError");
+
+      if (!rawName) {
+        nameInput.classList.add("input-error");
+        errBox.textContent = "Please enter your student name before starting the quiz.";
+        errBox.style.display = "block";
+        nameInput.focus();
+        return;
+      }
+
+      clearNameError();
+      selectedTopic = document.getElementById("topicDropdown").value;
+
+      currentUser = {
+        name: rawName,
+        email: rawEmail
+      };
+
+      document.getElementById("chipName").textContent = currentUser.name;
+      document.getElementById("userChip").style.display = "flex";
+      document.getElementById("btnStrengths").style.display = "inline-flex";
+      document.getElementById("btnSwitchUser").style.display = "inline-flex";
+
+      isMissedRetryMode = false;
+      startQuiz();
+    }
+
+    function resetToStart() {
+      stopTimer();
+      document.getElementById("userChip").style.display = "none";
+      document.getElementById("btnStrengths").style.display = "none";
+      document.getElementById("btnSwitchUser").style.display = "none";
+      showView("viewLogin");
+    }
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function initTopicStats() {
+      topicStats = {
+        "Culturing Microorganisms & Aseptic Technique": { attempted: 0, correct: 0 },
+        "Monoclonal Antibodies": { attempted: 0, correct: 0 }
+      };
+    }
+
+    function startQuiz(customQuestionList = null) {
+      initTopicStats();
+      sessionHistory = [];
+
+      let sourceQuestions;
+      if (customQuestionList && customQuestionList.length > 0) {
+        sourceQuestions = shuffleArray(customQuestionList);
+      } else {
+        const filteredPool =
+          selectedTopic === "ALL"
+            ? QUESTION_BANK
+            : QUESTION_BANK.filter(q => q.category === selectedTopic);
+        sourceQuestions = shuffleArray(filteredPool).slice(0, selectedQuestionCount);
+      }
+
+      quizQuestions = sourceQuestions.map(q => {
+        const indexedOptions = q.options.map((text, idx) => ({
+          text,
+          isCorrect: idx === q.correctIndex
+        }));
+        return {
+          ...q,
+          shuffledOptions: shuffleArray(indexedOptions)
+        };
+      });
+
+      currentIdx = 0;
+      score = 0;
+      streak = 0;
+      bestStreak = 0;
+      elapsedSeconds = 0;
+
+      document.getElementById("btn5050").disabled = false;
+      document.getElementById("btnClue").disabled = false;
+
+      startTimer();
+      showView("viewQuiz");
+      renderQuestion();
+    }
+
+    function restartQuiz() {
+      isMissedRetryMode = false;
+      startQuiz();
+    }
+
+    function retryMissedQuestions() {
+      const missedOriginalQuestions = sessionHistory
+        .filter(item => !item.isCorrect)
+        .map(item => item.questionObj);
+      if (missedOriginalQuestions.length === 0) return;
+      isMissedRetryMode = true;
+      startQuiz(missedOriginalQuestions);
+    }
+
+    function startTimer() {
+      stopTimer();
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        elapsedSeconds++;
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    function stopTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+    }
+
+    function formatTime(totalSecs) {
+      const mins = String(Math.floor(totalSecs / 60)).padStart(2, "0");
+      const secs = String(totalSecs % 60).padStart(2, "0");
+      return `${mins}:${secs}`;
+    }
+
+    function updateTimerDisplay() {
+      document.getElementById("hudTimer").textContent = formatTime(elapsedSeconds);
+    }
+
+    function renderQuestion() {
+      answeredCurrent = false;
+      const q = quizQuestions[currentIdx];
+      const total = quizQuestions.length;
+
+      document.getElementById("hudProgress").textContent = `${currentIdx + 1} / ${total}`;
+      document.getElementById("hudStreak").textContent = `${streak} 🔥`;
+      document.getElementById("hudScore").textContent = score;
+      document.getElementById("progressBarFill").style.width = `${((currentIdx + 1) / total) * 100}%`;
+
+      document.getElementById("specimenTag").textContent = `DIAGRAM ${String(currentIdx + 1).padStart(2, "0")}`;
+      document.getElementById("specimenTopic").textContent = q.topic;
+      document.getElementById("specimenCanvas").innerHTML = SPECIMEN_SVGS[q.visualId] || "";
+      document.getElementById("clueBox").style.display = "none";
+      document.getElementById("clueBox").textContent = "";
+
+      document.getElementById("qRef").textContent = isMissedRetryMode
+        ? `${q.ref} • Missed Retry`
+        : `${q.ref} • 1 Mark`;
+      document.getElementById("qCategoryBadge").textContent = q.category;
+      document.getElementById("questionText").textContent = q.question;
+      document.getElementById("feedbackDrawer").style.display = "none";
+
+      const letters = ["A", "B", "C", "D"];
+      const container = document.getElementById("optionsContainer");
+      container.innerHTML = "";
+
+      q.shuffledOptions.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.dataset.correct = opt.isCorrect ? "1" : "0";
+        btn.innerHTML = `<span class="opt-letter">${letters[i]}</span><span class="opt-text">${opt.text}</span>`;
+        btn.onclick = () => selectAnswer(btn, opt.text, opt.isCorrect, q);
+        container.appendChild(btn);
+      });
+
+      document.getElementById("btnNext").textContent =
+        currentIdx === total - 1 ? "Finish Quiz & View Diagnostic →" : "Next Question →";
+    }
+
+    function selectAnswer(clickedBtn, chosenText, isCorrect, q) {
+      if (answeredCurrent) return;
+      answeredCurrent = true;
+
+      if (!topicStats[q.category]) {
+        topicStats[q.category] = { attempted: 0, correct: 0 };
+      }
+      topicStats[q.category].attempted++;
+      if (isCorrect) topicStats[q.category].correct++;
+
+      const correctOpt = q.shuffledOptions.find(o => o.isCorrect);
+      sessionHistory.push({
+        questionObj: q,
+        chosenText,
+        correctText: correctOpt ? correctOpt.text : q.options[q.correctIndex],
+        isCorrect
+      });
+
+      const allBtns = document.querySelectorAll(".option-btn");
+      allBtns.forEach(btn => {
+        btn.disabled = true;
+        if (btn.dataset.correct === "1") {
+          btn.classList.add("correct");
+        }
+      });
+
+      const titleEl = document.getElementById("feedbackTitle");
+      if (isCorrect) {
+        clickedBtn.classList.add("correct");
+        score++;
+        streak++;
+        if (streak > bestStreak) bestStreak = streak;
+        titleEl.textContent = "✓ Mark Awarded — Accurate AQA 8461 Terminology";
+        titleEl.style.color = "#10b981";
+      } else {
+        clickedBtn.classList.add("wrong");
+        streak = 0;
+        titleEl.textContent = "✗ Incorrect — Review the AQA Mark-Scheme Note";
+        titleEl.style.color = "#fb7185";
+      }
+
+      document.getElementById("hudScore").textContent = score;
+      document.getElementById("hudStreak").textContent = `${streak} 🔥`;
+      document.getElementById("feedbackText").textContent = q.explanation;
+      document.getElementById("feedbackDrawer").style.display = "block";
+    }
+
+    function use5050() {
+      if (answeredCurrent) return;
+      const btn5050 = document.getElementById("btn5050");
+      if (btn5050.disabled) return;
+      btn5050.disabled = true;
+
+      const wrongBtns = Array.from(document.querySelectorAll(".option-btn")).filter(
+        b => b.dataset.correct === "0"
+      );
+      shuffleArray(wrongBtns).slice(0, 2).forEach(b => {
+        b.disabled = true;
+        b.classList.add("eliminated");
+      });
+    }
+
+    function useClue() {
+      const btnClue = document.getElementById("btnClue");
+      if (btnClue.disabled) return;
+      btnClue.disabled = true;
+
+      const q = quizQuestions[currentIdx];
+      const clueBox = document.getElementById("clueBox");
+      clueBox.textContent = `Examiner Clue: ${q.clue}`;
+      clueBox.style.display = "block";
+    }
+
+    function nextQuestion() {
+      if (currentIdx < quizQuestions.length - 1) {
+        currentIdx++;
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function calculateSeparateGrade(pct) {
+      if (pct >= 84) return "9";
+      if (pct >= 75) return "8";
+      if (pct >= 66) return "7";
+      if (pct >= 56) return "6";
+      if (pct >= 46) return "5";
+      if (pct >= 36) return "4";
+      return "3";
+    }
+
+    function buildTopicCardsHTML() {
+      return Object.entries(topicStats)
+        .map(([category, data]) => {
+          const pct = data.attempted > 0 ? Math.round((data.correct / data.attempted) * 100) : null;
+          let badgeClass = "untested";
+          let badgeText = "Not Tested";
+          let barColor = "#475569";
+          let barWidth = 0;
+
+          if (pct !== null) {
+            barWidth = pct;
+            if (pct >= 70) {
+              badgeClass = "strength";
+              badgeText = `Strength (${pct}%)`;
+              barColor = "#10b981";
+            } else if (pct >= 50) {
+              badgeClass = "developing";
+              badgeText = `Developing (${pct}%)`;
+              barColor = "#facc15";
+            } else {
+              badgeClass = "weakness";
+              badgeText = `Focus Area (${pct}%)`;
+              barColor = "#fb7185";
+            }
+          }
+
+          return `
+            <div class="diag-card">
+              <div class="diag-card-top">
+                <strong>${category}</strong>
+                <span class="status-tag ${badgeClass}">${badgeText}</span>
+              </div>
+              <div class="topic-bar-bg">
+                <div class="topic-bar-fill" style="width:${barWidth}%; background:${barColor};"></div>
+              </div>
+              <div style="font-size:0.82rem; color:var(--text-muted);">
+                ${data.correct} correct out of ${data.attempted} questions
+              </div>
+              <div class="diag-tip">${TOPIC_TIPS[category] || ""}</div>
+            </div>
+          `;
+        })
+        .join("");
+    }
+
+    function getFormattedSummaryText() {
+      const total = quizQuestions.length;
+      const pct = Math.round((score / total) * 100);
+      const grade = calculateSeparateGrade(pct);
+
+      const strengths = [];
+      const developing = [];
+      const focusAreas = [];
+
+      Object.entries(topicStats).forEach(([cat, data]) => {
+        if (data.attempted === 0) return;
+        const p = Math.round((data.correct / data.attempted) * 100);
+        const label = `${cat} (${data.correct}/${data.attempted} - ${p}%)`;
+        if (p >= 70) strengths.push(label);
+        else if (p >= 50) developing.push(label);
+        else focusAreas.push(label);
+      });
+
+      const lines = [
+        `Mr Leek Science — AQA GCSE Biology (8461) Separate Science Diagnostic`,
+        `Student: ${currentUser.name}`,
+        currentUser.email ? `Email: ${currentUser.email}` : null,
+        `Score: ${score} / ${total} (${pct}%) | Est. Grade: ${grade} | Time: ${formatTime(elapsedSeconds)}`,
+        ``,
+        `Strengths (>=70%): ${strengths.length ? strengths.join("; ") : "None yet"}`,
+        `Developing (50-69%): ${developing.length ? developing.join("; ") : "None"}`,
+        `Focus Areas (<50%): ${focusAreas.length ? focusAreas.join("; ") : "None — strong across all tested topics!"}`,
+        ``,
+        `More revision at https://mrleekscience.co.uk`
+      ].filter(line => line !== null);
+
+      return lines.join("\n");
+    }
+
+    function copyReportSummary() {
+      const text = getFormattedSummaryText();
+      const tempArea = document.createElement("textarea");
+      tempArea.value = text;
+      tempArea.style.position = "fixed";
+      tempArea.style.opacity = "0";
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      try {
+        document.execCommand("copy");
+        const toast = document.getElementById("copyToast");
+        toast.style.display = "block";
+        setTimeout(() => {
+          toast.style.display = "none";
+        }, 3500);
+      } catch (err) {
+        // Fallback silently if blocked
+      }
+      document.body.removeChild(tempArea);
+    }
+
+    function finishQuiz() {
+      stopTimer();
+      showView("viewResults");
+
+      const total = quizQuestions.length;
+      const pct = Math.round((score / total) * 100);
+      const missedCount = sessionHistory.filter(item => !item.isCorrect).length;
+
+      document.getElementById("resGrade").textContent = calculateSeparateGrade(pct);
+      document.getElementById("resHeadline").textContent = `Session Complete, ${currentUser.name}!`;
+      document.getElementById("resSubline").textContent =
+        `Completed ${total} AQA GCSE Biology (8461) Separate Science questions on Cell Biology.`;
+
+      const emailBadge = document.getElementById("resEmailDisplay");
+      if (currentUser.email) {
+        emailBadge.textContent = `✉️ Report formatted for: ${currentUser.email}`;
+        emailBadge.style.display = "inline-flex";
+      } else {
+        emailBadge.style.display = "none";
+      }
+
+      document.getElementById("resScore").textContent = `${score} / ${total}`;
+      document.getElementById("resPercent").textContent = `${pct}%`;
+      document.getElementById("resStreak").textContent = `${bestStreak} 🔥`;
+      document.getElementById("resTime").textContent = formatTime(elapsedSeconds);
+
+      // Configure mailto link
+      const subject = encodeURIComponent(`AQA Biology (8461) Separate Cell Biology Report — ${currentUser.name}`);
+      const body = encodeURIComponent(getFormattedSummaryText());
+      const recipient = currentUser.email ? encodeURIComponent(currentUser.email) : "";
+      document.getElementById("btnEmailResults").href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+      const retryBtn = document.getElementById("btnRetryMissed");
+      if (missedCount > 0) {
+        retryBtn.style.display = "inline-flex";
+        document.getElementById("missedCountBadge").textContent = missedCount;
+      } else {
+        retryBtn.style.display = "none";
+      }
+
+      document.getElementById("resultsTopicGrid").innerHTML = buildTopicCardsHTML();
+
+      const reviewContainer = document.getElementById("reviewListContainer");
+      reviewContainer.innerHTML = sessionHistory
+        .map((item, idx) => {
+          const statusClass = item.isCorrect ? "is-correct" : "is-wrong";
+          const statusLabel = item.isCorrect
+            ? `<span style="color:#10b981; font-weight:700;">✓ Correct</span>`
+            : `<span style="color:#fb7185; font-weight:700;">✗ Incorrect</span>`;
+          return `
+            <div class="review-item ${statusClass}">
+              <div class="review-item-header">
+                <span style="color:var(--cyan); font-weight:700;">Q${idx + 1} • ${item.questionObj.category}</span>
+                ${statusLabel}
+              </div>
+              <div class="review-q-text">${item.questionObj.question}</div>
+              <div class="review-answers">
+                <div><strong>Your Answer:</strong> <span style="color:${item.isCorrect ? "#6ee7b7" : "#fecdd3"};">${item.chosenText}</span></div>
+                ${!item.isCorrect ? `<div><strong>Correct Answer:</strong> <span style="color:#6ee7b7;">${item.correctText}</span></div>` : ""}
+              </div>
+              <div class="review-exp"><strong>AQA Mark-Scheme Note:</strong> ${item.questionObj.explanation}</div>
+            </div>
+          `;
+        })
+        .join("");
+    }
+
+    function openAnalysisModal() {
+      document.getElementById("modalTopicGrid").innerHTML = buildTopicCardsHTML();
+      document.getElementById("analysisModal").style.display = "flex";
+    }
+
+    function closeAnalysisModal() {
+      document.getElementById("analysisModal").style.display = "none";
+    }
+
+    function closeAnalysisOnBackdrop(e) {
+      if (e.target.id === "analysisModal") {
+        closeAnalysisModal();
+      }
+    }
+
+    // Keyboard shortcuts: 1-4 or A-D to select option, Enter to advance
+    document.addEventListener("keydown", e => {
+      const quizView = document.getElementById("viewQuiz");
+      if (!quizView.classList.contains("active")) return;
+      if (document.getElementById("analysisModal").style.display === "flex") return;
+
+      const key = e.key.toUpperCase();
+      const keyMap = { "1": 0, "A": 0, "2": 1, "B": 1, "3": 2, "C": 2, "4": 3, "D": 3 };
+
+      if (!answeredCurrent && key in keyMap) {
+        const btns = document.querySelectorAll("#optionsContainer .option-btn");
+        const targetBtn = btns[keyMap[key]];
+        if (targetBtn && !targetBtn.disabled) {
+          targetBtn.click();
+        }
+      } else if (answeredCurrent && e.key === "Enter") {
+        e.preventDefault();
+        nextQuestion();
+      }
+    });
+  </script>
+</body>
+</html>
